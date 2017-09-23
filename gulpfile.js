@@ -50,7 +50,8 @@ gulp.task('headerfooter', function() {
 	.pipe(headerfooter.header('app/partials/header.html'))
 	.pipe(headerfooter.footer('/app/partials/footer.html'))
 	.pipe(gulp.dest('app'))
-})
+	.gulp.run('html');
+});
 
 gulp.task('watch', function() {
 	gulp.run('go');
