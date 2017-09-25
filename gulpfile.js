@@ -1,34 +1,22 @@
 var gulp = require('gulp'),
-	uglify = require('gulp-uglify'),
-	concat = require('gulp-concat'),
 	minifyCSS = require('gulp-minify-css'),
-	headerfooter = require('gulp-headerfooter'),
-	sass = require('gulp-sass');
+	wrap = require('gulp-wrap');
 
-
-gulp.task('sass', function() {
-	gulp.src([
-		'node_modules/bootstrap-sass/assets/stylesheets/_bootstrap.scss', 
-		'app/scss/**/*.scss'])
-	.pipe(sass())
-	.pipe(gulp.dest('app/css'));
-});
 
 gulp.task('css', function() {
 	gulp.src('app/css/**/*.css')
-	.pipe(minifyCSS())
-	.pipe(concat('styles.css'))
+	.pipe(minifyCSS('styles.css'))
 	.pipe(gulp.dest('dist/css'));
 });
 
 gulp.task('js', function() {
-	gulp.src([
-		'node_modules/jquery/dist/jquery.js', 
-		'node_modules/bootstrap-sass/assets/javascripts/bootstrap.js', 
-		'app/js/**/*.js'])
-	.pipe(uglify())
-	.pipe(concat('script.js'))
+	gulp.src('app/js/**/*.js')
 	.pipe(gulp.dest('dist/js'));
+});
+
+gulp.task('fonts', function() {
+	gulp.src('app/fonts/**/*.*')
+	.pipe(gulp.dest('dist/fonts'));
 });
 
 gulp.task('images', function() {
@@ -36,43 +24,36 @@ gulp.task('images', function() {
 	.pipe(gulp.dest('dist/images'));
 });
 
-gulp.task('html', function() {
-	gulp.src('app/*.html')
+gulp.task('layout', function() {
+	gulp.src(['app/**/*.html', '!app/layout.html'])
+	.pipe(wrap({src: 'app/layout.html'}))
 	.pipe(gulp.dest('dist'));
 });
 
-gulp.task('go', function() {
-	gulp.run('sass', 'css', 'js', 'images');
-});
-
-gulp.task('headerfooter', function() {
-	gulp.src('app')
-	.pipe(headerfooter.header('app/partials/header.html'))
-	.pipe(headerfooter.footer('/app/partials/footer.html'))
-	.pipe(gulp.dest('app'))
-	.gulp.run('html');
+gulp.task('default', function() {
+	gulp.run('css', 'js', 'fonts', 'images', 'layout');
 });
 
 gulp.task('watch', function() {
-	gulp.run('go');
-	gulp.watch('app/scss/**/*.scss', function(event) {
-		console.log('File ' + event.path + 'was' + event.type + ', doing work son.');
-		gulp.run('sass');
-	});
-	gulp.watch('app/js/**/*.js', function(event) {
-		console.log('File ' + event.path + ' was ' + event.type + ', doing work son.');
+	gulp.run('default');
+	gulp.watch('app/js/**/*', function(event) {
+		console.log('File ' + event.path + ' was ' + event.type);
 		gulp.run('js');
 	});
+	gulp.watch('app/fonts/**/*', function(event) {
+		console.log('File ' + event.path + ' was ' + event.type);
+		gulp.run('fonts');
+	});
 	gulp.watch('app/images/**/*', function(event) {
-		console.log('File ' + event.path ' was ' + event.type + ', doing work son.');
+		console.log('File ' + event.path + ' was ' + event.type);
 		gulp.run('images');
 	});
-	gulp.watch('app/*.html', function(event) {
-		console.log('File ' + event.path + ' was ' + event.type + ', doing work son.');
-		gulp.run('html');
+	gulp.watch('app/**/*.html', function(event) {
+		console.log('File ' + event.path + ' was ' + event.type);
+		gulp.run('layout');
 	});
-	gulp.watch('app/partials/*.html', function(event) {
-		console.log('File ' + event.path + ' was ' + event.type + ', doing work son.');
-		gulp.run('headerfooter');
+	gulp.watch('app/css/**/*.css', function(event) {
+		console.log('File ' + event.path + ' was ' + event.type);
+		gulp.run('css');
 	});
 });

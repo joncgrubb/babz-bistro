@@ -1,0 +1,174 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway|Rye');
+/* FONTS */
+/*  font-family: 'Rye', cursive;        -CAPS
+    font-family: 'Raleway', sans-serif; -TEXT        */
+
+/* COLORS */
+/*  Green: #93dfb8
+    Brown: #845856
+    Pink:  #ff3399
+    Brick: #c32148
+    Cyan:  #50bfe6
+    Cream: #dde0d7
+*/
+
+body {
+	font-family: 'Raleway', sans-serif;
+	background-color: #dde0d7;
+}
+
+.jumbotron {
+	margin-left: 3%;
+	background-color: #eaece7;
+}
+
+#menu {
+	list-style: none;
+}
+
+#menu li {
+	border-bottom: 1px solid;
+}
+
+#locinfo {
+	padding: 15%;
+	margin-top: -10%
+}
+
+#locpic {
+	margin: auto;
+	border-radius: 10px;
+	height: 30%;
+	width: 30%;
+	margin-top: 3%;
+}
+
+#truck {
+	margin: auto;
+	border-radius: 10px;
+	height: 50%;
+	width: 50%;
+	margin-top: 3%;
+}
+
+#fb {
+	margin: auto;
+	margin-top: -15%;
+	height: 10%;
+	width: 10%;
+}
+
+#fbinfo {
+	margin-top: -3%;
+}
+
+#pan {
+	border-radius: 50%;
+	height: 40px;
+	width: 40px;
+	margin-right: 10px;
+	margin-top: -10px;
+}
+
+#about {
+	padding: 15%;
+	margin-top: -10%;
+	margin-bottom: -10%;
+}
+
+#bistro {
+	color: #48abcf;
+}
+
+#spread {
+	border-radius: 10px;
+}
+
+#grubbfoot {
+	margin-bottom: 2%;
+}
+
+#grubblink {
+	text-decoration: none;
+	color: #ff3399;
+}
+
+.navbar-brand {
+	font-family: 'Rye', cursive;
+}
+
+.navbar {
+	margin-bottom: 0;
+	position: fixed;
+	min-width: 50%;
+}
+
+.navbar-default {
+  background-color: #caebf7;
+  border-color: #30728a;
+}
+.navbar-default .navbar-brand {
+  color: #30728a;
+}
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand:focus {
+  color: #ff3399;
+}
+.navbar-default .navbar-text {
+  color: #30728a;
+}
+.navbar-default .navbar-nav > li > a {
+  color: #30728a;
+}
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus {
+  color: #ff3399;
+}
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:hover,
+.navbar-default .navbar-nav > .active > a:focus {
+  color: #dde0d7;
+  background-color: #30728a;
+}
+.navbar-default .navbar-nav > .open > a,
+.navbar-default .navbar-nav > .open > a:hover,
+.navbar-default .navbar-nav > .open > a:focus {
+  color: #dde0d7;
+  background-color: #30728a;
+}
+.navbar-default .navbar-toggle {
+  border-color: #30728a;
+}
+.navbar-default .navbar-toggle:hover,
+.navbar-default .navbar-toggle:focus {
+  background-color: #30728a;
+}
+.navbar-default .navbar-toggle .icon-bar {
+  background-color: #30728a;
+}
+.navbar-default .navbar-collapse,
+.navbar-default .navbar-form {
+  border-color: #30728a;
+}
+.navbar-default .navbar-link {
+  color: #30728a;
+}
+.navbar-default .navbar-link:hover {
+  color: #ff3399;
+}
+
+@media (max-width: 767px) {
+  .navbar-default .navbar-nav .open .dropdown-menu > li > a {
+    color: #30728a;
+  }
+  .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,
+  .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
+    color: #dde0d7;
+  }
+  .navbar-default .navbar-nav .open .dropdown-menu > .active > a,
+  .navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover,
+  .navbar-default .navbar-nav .open .dropdown-menu > .active > a:focus {
+    color: #dde0d7;
+    background-color: #30728a;
+  }
+}
